@@ -38,6 +38,7 @@ namespace backend.Services
 
         public async Task SaveAsync(ContactModel contactModel)
         {
+            contactModel.RegistrationDate = DateTime.UtcNow;
             await _contactsCollection.InsertOneAsync(contactModel);
         }
 
