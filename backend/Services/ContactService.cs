@@ -26,6 +26,16 @@ namespace backend.Services
             return await _contactsCollection.Find(item => item.Id == id).FirstOrDefaultAsync();
         }
 
+        public async Task<ContactModel?> FindByFilterAsync(string? name, string? email, DateTime? registrationDate) 
+        {
+            return await _contactsCollection
+                            .Find(item => 
+                                item.Name == name || 
+                                item.Email == email ||
+                                item.RegistrationDate == registrationDate)
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task SaveAsync(ContactModel contactModel)
         {
             await _contactsCollection.InsertOneAsync(contactModel);

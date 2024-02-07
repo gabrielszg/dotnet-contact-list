@@ -34,6 +34,20 @@ namespace backend.Controllers
             return contact;
         }
 
+        [HttpGet]
+        [Route("filter")]
+        public async Task<ActionResult<ContactModel>> FindByFilter(string? name = null, string? email = null, DateTime? registrationDate = null)
+        {
+            var contact = await _contactService.FindByFilterAsync(name, email, registrationDate);
+
+            if (contact is null)
+            {
+                return NotFound();
+            }
+
+            return contact;
+        }
+
         [HttpPost]
         public async Task<IActionResult> Save(ContactModel newContact)
         {
