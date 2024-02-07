@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using backend.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -18,6 +14,31 @@ namespace backend.Services
             var mongoDatabase = mongoClient.GetDatabase(contactsDatabaseSettings.Value.DatabaseName);
 
             _contactsCollection = mongoDatabase.GetCollection<ContactModel>(contactsDatabaseSettings.Value.ContactsCollectionName);
+        }
+
+        public async Task<List<ContactModel>> FindAllAsync()
+        {
+            return await _contactsCollection.Find(_ => true).ToListAsync();
+        }
+
+        public async Task<ContactModel?> FindByIdAsync(string id) 
+        {
+            return await _contactsCollection.Find(item => item.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task SaveAsync(ContactModel contactModel)
+        {
+            await _contactsCollection.InsertOneAsync(contactModel);
+        }
+
+        public async Task UpdateAsync(string id, ContactModel updatedContactModel)
+        {
+            await _contactsCollection.ReplaceOneAsync(item => item.Id == id, updatedContactModel);
+        }
+
+        public async Task DeleteAsync(string id)
+        {
+            await _contactsCollection.DeleteOneAsync(item => item.Id == id);
         }
     }
 }

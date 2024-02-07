@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dev\\Documents\\React\\dotnet-contact-list\\backend\\backend.csproj": {}
+    "C:\\workspace\\dotnet-contact-list\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dev\\Documents\\React\\dotnet-contact-list\\backend\\backend.csproj": {
+    "C:\\workspace\\dotnet-contact-list\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dev\\Documents\\React\\dotnet-contact-list\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\workspace\\dotnet-contact-list\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\Dev\\Documents\\React\\dotnet-contact-list\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\Dev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dev\\Documents\\React\\dotnet-contact-list\\backend\\obj\\",
+        "projectPath": "C:\\workspace\\dotnet-contact-list\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "C:\\workspace\\dotnet-contact-list\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dev\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
