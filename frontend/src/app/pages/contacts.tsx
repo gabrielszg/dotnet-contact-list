@@ -1,14 +1,17 @@
+'use client'
 import { useEffect, useState } from "react";
 import Form from "../components/form";
 import Grid from "../components/grid";
+import { Contact } from "../lib/contact";
+import { contactsApiUrl } from "../api/contactsApi";
 
 export default function Contacts() {
-    const [contacts, setContacts] = useState([]);
-    const [onEdit, setOnEdit] = useState(null);
+    const [contacts, setContacts] = useState(Array<Contact>);
+    const [onEdit, setOnEdit] = useState<Contact | undefined>();
 
-    const getContacts = async (): Promise<void> => {
-        const response = await fetch('http://localhost:5143/api/contacts');
-        const data = await response.json();
+    const getContacts = async () => {
+        const response = await fetch(contactsApiUrl);
+        const data: Contact[] = await response.json();
         setContacts(data);
     }
 
