@@ -1,34 +1,40 @@
 'use client'
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Contact } from "../lib/contact";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { contactsApiUrl } from "../api/contactsApi";
 
 interface Props {
-    onEdit: null,
-    setOnEdit: Dispatch<SetStateAction<null>>,
+    onEdit: Contact | undefined,
+    setOnEdit: Dispatch<SetStateAction<Contact | undefined>>,
     getContacts: any
 }
 
 export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
-    const { register, handleSubmit } = useForm<Contact>();
+    const { register, handleSubmit, setValue, getValues, reset } = useForm<Contact>();
 
     const onSubmit: SubmitHandler<Contact> = async (data) => {
         if (onEdit) {
-            fetch(`http://localhost:5143/api/contacts`, {
+            await fetch(`${contactsApiUrl}/${onEdit.id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify({
+                    name: getValues().name,
+                    email: getValues().email,
+                    registrationDate: onEdit.registrationDate
+                }),
             })
                 .then((response) => response.json)
-                .then(() => alert('Contato cadastrado com sucesso!'))
-                .catch((error) => alert('Erro ao cadastrar contato!'));
+                .then(() => alert('Contato atualizado com sucesso!'))
+                .catch((error) => alert('Erro ao atualizar contato!'));
 
-            setOnEdit(null);
+            setOnEdit(undefined);
             getContacts();
+            reset();
         } else {
-            fetch('http://localhost:5143/api/contacts', {
+            await fetch(contactsApiUrl, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -39,18 +45,26 @@ export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
                 .then(() => alert('Contato cadastrado com sucesso!'))
                 .catch((error) => alert('Erro ao cadastrar contato!'));
 
-            setOnEdit(null);
+            setOnEdit(undefined);
             getContacts();
+            reset();
         }
-
-
     };
+
+    useEffect(() => {
+        if (onEdit) {
+            setValue('name', onEdit.name);
+            setValue('email', onEdit.email);
+        }
+    }, [onEdit]);
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label>Nome</label>
-                <input {...register("name")} />
+                <label htmlFor="name">Nome</label>
+                <input type="text" required {...register("name", {
+                    required: true
+                })} />
 
                 <label htmlFor="email">Email</label>
                 <input type="email" required {...register("email", {
