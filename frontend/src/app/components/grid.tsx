@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Contact } from "../lib/contact";
 import { FaPencil, FaTrash } from "react-icons/fa6";
 import { contactsApiUrl } from "../api/contactsApi";
+import { convertDate } from "../lib/utils";
 
 interface Props {
     contacts: Array<Contact>,
@@ -10,13 +11,6 @@ interface Props {
 }
 
 export default function Grid({ contacts, setContacts, setOnEdit }: Props) {
-    const convertDate = (date: Date): string => {
-        const dateValue = new Date(date).valueOf();
-        const timezoneOffset = new Date(date).getTimezoneOffset();
-        const localDate = new Date(dateValue - timezoneOffset * 60000)
-        return localDate.toLocaleDateString();
-    };
-
     const handleEdit = (item: Contact) => {
         setOnEdit(item);
     };
