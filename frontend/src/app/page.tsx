@@ -1,10 +1,8 @@
-import styles from "./page.module.css";
-import Contacts from "./pages/contacts";
+import 'tailwindcss/tailwind.css';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Contacts />
+    <main>
     </main>
   );
 }

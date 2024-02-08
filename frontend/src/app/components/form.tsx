@@ -61,21 +61,38 @@ export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="name">Nome</label>
-                <input type="text" required {...register("name", {
-                    required: true
-                })} />
+                <div className="rounded-md bg-gray-50 p-4 md:p-6">
+                    <div className="mb-4">
+                        <label htmlFor="name">Nome</label>
+                        <input
+                            type="text"
+                            required
+                            className="peer block w-100 rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
+                            {...register("name", {
+                                required: true
+                            })}
+                        />
 
-                <label htmlFor="email">Email</label>
-                <input type="email" required {...register("email", {
-                    required: "Email é requerido.",
-                    pattern: {
-                        value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                        message: "Email não está correto."
-                    }
-                })}
-                />
-                <button type="submit">Adicionar Contato</button>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            required
+                            className="peer block w-100 rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
+                            {...register("email", {
+                                required: "Email é requerido.",
+                                pattern: {
+                                    value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                                    message: "Email não está correto."
+                                }
+                            })}
+                        />
+                        <button
+                            type="submit"
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded">
+                            Adicionar Contato
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     );
