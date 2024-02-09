@@ -1,9 +1,9 @@
 'use client'
 import { useEffect, useState } from "react";
-import Form from "../components/form";
-import Grid from "../components/grid";
-import { Contact } from "../lib/contact";
-import { contactsApiUrl } from "../api/contactsApi";
+import Form from "@/app/components/form";
+import Grid from "@/app/components/grid";
+import { Contact } from "@/app/lib/contact";
+import { contactsApiUrl } from "@/app/api/contactsApi";
 
 export default function Contacts() {
     const [contacts, setContacts] = useState(Array<Contact>);
