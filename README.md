@@ -112,4 +112,3 @@ http://localhost:3000/
 <a href="https://github.com/gabrielszg">
   <p>@gabrielszg</p>
 </a>
-
