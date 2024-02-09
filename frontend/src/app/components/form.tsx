@@ -11,7 +11,13 @@ interface Props {
 }
 
 export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
-    const { register, handleSubmit, setValue, getValues, reset } = useForm<Contact>();
+    const { 
+        register, 
+        handleSubmit, 
+        setValue, 
+        getValues, 
+        reset 
+    } = useForm<Contact>();
 
     const onSubmit: SubmitHandler<Contact> = async (data) => {
         if (onEdit) {
@@ -51,6 +57,10 @@ export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
         }
     };
 
+    const handleFormClean = () => {
+        reset();
+    };
+
     useEffect(() => {
         if (onEdit) {
             setValue('name', onEdit.name);
@@ -67,7 +77,8 @@ export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
                         <input
                             type="text"
                             required
-                            className="peer block w-100 rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
+                            size={30}
+                            className="peer block rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
                             {...register("name", {
                                 required: true
                             })}
@@ -77,7 +88,8 @@ export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
                         <input
                             type="email"
                             required
-                            className="peer block w-100 rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
+                            size={30}
+                            className="peer block rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
                             {...register("email", {
                                 required: "Email é requerido.",
                                 pattern: {
@@ -86,17 +98,23 @@ export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
                                 }
                             })}
                         />
-                        <button
-                            type="submit"
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded">
-                            {onEdit ? 'Atualizar Contato'  : 'Adicionar Contato'} 
-                        </button>
 
-                        <button
-                            type="button"
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded">
-                            Limpar
-                        </button>
+                        <div className="flex flex-row">
+                            <button
+                                type="submit"
+                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded">
+                                {onEdit ? 'Atualizar Contato' : 'Adicionar Contato'}
+                            </button>
+
+                            <div className="ml-3">
+                                <button
+                                    type="button"
+                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded"
+                                    onClick={handleFormClean}>
+                                    Limpar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
