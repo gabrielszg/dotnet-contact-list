@@ -71,7 +71,7 @@ export default function Form({ onEdit, setOnEdit, getContacts }: Props) {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="rounded-md bg-gray-50 p-4 md:p-6">
+                <div className="rounded-md bg-gray-100 p-4 md:p-6">
                     <div className="mb-4">
                         <label htmlFor="name">Nome</label>
                         <input

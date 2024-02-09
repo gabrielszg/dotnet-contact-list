@@ -102,7 +102,7 @@ export default function Grid({ contacts, setContacts, setOnEdit }: Props) {
             </div>
 
             <table className="hidden min-w-full rounded-md text-gray-900 md:table mt-5">
-                <thead className="rounded-md bg-gray-50 text-left text-sm font-normal">
+                <thead className="rounded-md bg-gray-100 text-left text-sm font-normal">
                     <tr>
                         <th
                             scope="col"
