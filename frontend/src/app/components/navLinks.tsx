@@ -1,9 +1,10 @@
 'use client';
 import Link from 'next/link';
-import { FaBook } from 'react-icons/fa';
+import { FaBook, FaHome } from 'react-icons/fa';
 
 const links = [
-    { name: 'Contacts', href: '/pages', icon: FaBook },
+    { name: 'Home', href: '/', icon: FaHome},
+    { name: 'Contacts', href: '/pages/contacts', icon: FaBook },
 ];
 
 export default function NavLinks() {
