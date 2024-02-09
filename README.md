@@ -2,7 +2,7 @@
 	🚧 CRUD Cadastro de Contatos 🚀 🚧
 </h4>
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/gabrielszg/dotnet-contact-list/master/LICENSE) 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/gabrielszg/dotnet-contact-list/blob/master/LICENSE) 
 
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
