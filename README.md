@@ -60,7 +60,7 @@ $ docker-compose up
 
 # O container será criado e iniciado
 
-# O Mongo Express estará disponível no endereço
+# O Mongo Express estará disponível no endereço (usuário e senha estão no arquivo docker-compose)
 http://localhost:8081
 
 ```
@@ -73,7 +73,7 @@ http://localhost:8081
 $ dotnet run
 
 # A API estará disponível no endereço
-http://localhost:5143/api/contacts/swagger
+http://localhost:5143/swagger/index.html
 
 ```
 
